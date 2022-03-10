@@ -159,6 +159,17 @@ class RadioTest {
     }
 
     @Test
+    public void shouldSetCurrentVolume11to0() {
+        Radio service = new Radio();
+        service.setCurrentVolume(11);
+
+        int expected = 0;
+        int actual = service.getCurrentVolume();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSetCurrentVolume0() {
         Radio service = new Radio();
         service.setCurrentVolume(0);
@@ -175,6 +186,17 @@ class RadioTest {
         service.setCurrentVolume(10);
 
         int expected = 10;
+        int actual = service.getCurrentVolume();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetCurrentVolumeMinus999to0() {
+        Radio service = new Radio();
+        service.setCurrentVolume(-999);
+
+        int expected = 0;
         int actual = service.getCurrentVolume();
 
         assertEquals(expected, actual);
