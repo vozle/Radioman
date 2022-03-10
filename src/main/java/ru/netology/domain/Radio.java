@@ -30,19 +30,16 @@ public class Radio {
         if (currentChannel < 9) {
             currentChannel = currentChannel + 1;
         }
-        if (currentChannel >= 9) {
+        else {
             this.currentChannel = 0;
         }
     }
 
     public void prevChannel() {
-        if (currentChannel < 9) {
+        if (currentChannel > 0) {
             currentChannel = currentChannel - 1;
         }
-        if (currentChannel == 9) {
-            currentChannel = currentChannel - 1;
-        }
-        if (currentChannel < 0) {
+        else {
             this.currentChannel = 9;
         }
     }
