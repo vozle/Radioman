@@ -15,27 +15,11 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSetNewCurrentChannelMinus9is0() {
-        Radio service = new Radio();
-        service.setCurrentChannel(-9);
-
-        assertEquals(0, service.getCurrentChannel());
-    }
-
-    @Test
     public void shouldSetNewCurrentChannelCount101to100() {
         Radio service = new Radio(101);
         service.setCurrentChannel(100);
 
         assertEquals(100, service.getCurrentChannel());
-    }
-
-    @Test
-    public void shouldSetNewCurrentChannelCount101from101to0() {
-        Radio service = new Radio(101);
-        service.setCurrentChannel(101);
-
-        assertEquals(0, service.getCurrentChannel());
     }
 
     @Test
@@ -166,22 +150,6 @@ class RadioTest {
         service.setCurrentVolume(10);
 
         assertEquals(10, service.getCurrentVolume());
-    }
-
-    @Test
-    public void shouldSetCurrentVolume101to0() {
-        Radio service = new Radio();
-        service.setCurrentVolume(101);
-
-        assertEquals(0, service.getCurrentVolume());
-    }
-
-    @Test
-    public void shouldSetCurrentVolumeMinus999to0() {
-        Radio service = new Radio();
-        service.setCurrentVolume(-999);
-
-        assertEquals(0, service.getCurrentVolume());
     }
 
     @Test
