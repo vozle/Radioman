@@ -11,21 +11,7 @@ class RadioTest {
         Radio service = new Radio();
         service.setCurrentChannel(0);
 
-        int expected = 0;
-        int actual = service.getCurrentChannel();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldSetNewCurrentChannel10is0() {
-        Radio service = new Radio();
-        service.setCurrentChannel(10);
-
-        int expected = 0;
-        int actual = service.getCurrentChannel();
-
-        assertEquals(expected, actual);
+        assertEquals(0, service.getCurrentChannel());
     }
 
     @Test
@@ -33,10 +19,23 @@ class RadioTest {
         Radio service = new Radio();
         service.setCurrentChannel(-9);
 
-        int expected = 0;
-        int actual = service.getCurrentChannel();
+        assertEquals(0, service.getCurrentChannel());
+    }
 
-        assertEquals(expected, actual);
+    @Test
+    public void shouldSetNewCurrentChannelCount101to100() {
+        Radio service = new Radio(101);
+        service.setCurrentChannel(100);
+
+        assertEquals(100, service.getCurrentChannel());
+    }
+
+    @Test
+    public void shouldSetNewCurrentChannelCount101from101to0() {
+        Radio service = new Radio(101);
+        service.setCurrentChannel(101);
+
+        assertEquals(0, service.getCurrentChannel());
     }
 
     @Test
@@ -44,10 +43,7 @@ class RadioTest {
         Radio service = new Radio();
         service.firstChannel();
 
-        int expected = 0;
-        int actual = service.getCurrentChannel();
-
-        assertEquals(expected, actual);
+        assertEquals(0, service.getCurrentChannel());
     }
 
     @Test
@@ -55,10 +51,15 @@ class RadioTest {
         Radio service = new Radio();
         service.lastChannel();
 
-        int expected = 9;
-        int actual = service.getCurrentChannel();
+        assertEquals(9, service.getCurrentChannel());
+    }
 
-        assertEquals(expected, actual);
+    @Test
+    public void shouldSetToLastChannelCount100() {
+        Radio service = new Radio(100);
+        service.lastChannel();
+
+        assertEquals(99, service.getCurrentChannel());
     }
 
     @Test
@@ -67,10 +68,7 @@ class RadioTest {
         service.setCurrentChannel(9);
         service.nextChannel();
 
-        int expected = 0;
-        int actual = service.getCurrentChannel();
-
-        assertEquals(expected, actual);
+        assertEquals(0, service.getCurrentChannel());
     }
 
     @Test
@@ -79,10 +77,7 @@ class RadioTest {
         service.setCurrentChannel(8);
         service.nextChannel();
 
-        int expected = 9;
-        int actual = service.getCurrentChannel();
-
-        assertEquals(expected, actual);
+        assertEquals(9, service.getCurrentChannel());
     }
 
 
@@ -92,10 +87,16 @@ class RadioTest {
         service.setCurrentChannel(0);
         service.nextChannel();
 
-        int expected = 1;
-        int actual = service.getCurrentChannel();
+        assertEquals(1, service.getCurrentChannel());
+    }
 
-        assertEquals(expected, actual);
+    @Test
+    public void shouldSetNextChannel99to0() {
+        Radio service = new Radio(100);
+        service.setCurrentChannel(99);
+        service.nextChannel();
+
+        assertEquals(0, service.getCurrentChannel());
     }
 
     @Test
@@ -104,10 +105,7 @@ class RadioTest {
         service.setCurrentChannel(0);
         service.prevChannel();
 
-        int expected = 9;
-        int actual = service.getCurrentChannel();
-
-        assertEquals(expected, actual);
+        assertEquals(9, service.getCurrentChannel());
     }
 
     @Test
@@ -116,10 +114,7 @@ class RadioTest {
         service.setCurrentChannel(9);
         service.prevChannel();
 
-        int expected = 8;
-        int actual = service.getCurrentChannel();
-
-        assertEquals(expected, actual);
+        assertEquals(8, service.getCurrentChannel());
     }
 
     @Test
@@ -128,22 +123,16 @@ class RadioTest {
         service.setCurrentChannel(1);
         service.prevChannel();
 
-        int expected = 0;
-        int actual = service.getCurrentChannel();
-
-        assertEquals(expected, actual);
+        assertEquals(0, service.getCurrentChannel());
     }
 
     @Test
-    public void shouldSetPrevChannel5to4() {
-        Radio service = new Radio();
-        service.setCurrentChannel(5);
+    public void shouldSetPrevChannel0to49() {
+        Radio service = new Radio(50);
+        service.setCurrentChannel(0);
         service.prevChannel();
 
-        int expected = 4;
-        int actual = service.getCurrentChannel();
-
-        assertEquals(expected, actual);
+        assertEquals(49, service.getCurrentChannel());
     }
 
     @Test
@@ -152,21 +141,15 @@ class RadioTest {
         service.setCurrentChannel(-9);
         service.prevChannel();
 
-        int expected = 9;
-        int actual = service.getCurrentChannel();
-
-        assertEquals(expected, actual);
+        assertEquals(9, service.getCurrentChannel());
     }
 
     @Test
-    public void shouldSetCurrentVolume11to0() {
+    public void shouldSetCurrentVolume100() {
         Radio service = new Radio();
-        service.setCurrentVolume(11);
+        service.setCurrentVolume(100);
 
-        int expected = 0;
-        int actual = service.getCurrentVolume();
-
-        assertEquals(expected, actual);
+        assertEquals(100, service.getCurrentVolume());
     }
 
     @Test
@@ -174,10 +157,7 @@ class RadioTest {
         Radio service = new Radio();
         service.setCurrentVolume(0);
 
-        int expected = 0;
-        int actual = service.getCurrentVolume();
-
-        assertEquals(expected, actual);
+        assertEquals(0, service.getCurrentVolume());
     }
 
     @Test
@@ -185,10 +165,15 @@ class RadioTest {
         Radio service = new Radio();
         service.setCurrentVolume(10);
 
-        int expected = 10;
-        int actual = service.getCurrentVolume();
+        assertEquals(10, service.getCurrentVolume());
+    }
 
-        assertEquals(expected, actual);
+    @Test
+    public void shouldSetCurrentVolume101to0() {
+        Radio service = new Radio();
+        service.setCurrentVolume(101);
+
+        assertEquals(0, service.getCurrentVolume());
     }
 
     @Test
@@ -196,10 +181,7 @@ class RadioTest {
         Radio service = new Radio();
         service.setCurrentVolume(-999);
 
-        int expected = 0;
-        int actual = service.getCurrentVolume();
-
-        assertEquals(expected, actual);
+        assertEquals(0, service.getCurrentVolume());
     }
 
     @Test
@@ -207,10 +189,7 @@ class RadioTest {
         Radio service = new Radio();
         service.minVolume();
 
-        int expected = 0;
-        int actual = service.getCurrentVolume();
-
-        assertEquals(expected, actual);
+        assertEquals(0, service.getCurrentVolume());
     }
 
     @Test
@@ -218,23 +197,17 @@ class RadioTest {
         Radio service = new Radio();
         service.maxVolume();
 
-        int expected = 10;
-        int actual = service.getCurrentVolume();
-
-        assertEquals(expected, actual);
+        assertEquals(100, service.getCurrentVolume());
     }
 
 
     @Test
-    public void shouldIncreaseVolume10to10() {
+    public void shouldIncreaseVolume100to100() {
         Radio service = new Radio();
-        service.setCurrentVolume(10);
+        service.setCurrentVolume(100);
         service.increaseVolume();
 
-        int expected = 10;
-        int actual = service.getCurrentVolume();
-
-        assertEquals(expected, actual);
+        assertEquals(100, service.getCurrentVolume());
     }
 
     @Test
