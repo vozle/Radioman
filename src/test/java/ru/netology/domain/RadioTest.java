@@ -234,10 +234,7 @@ class RadioTest {
         service.setCurrentVolume(0);
         service.reduceVolume();
 
-        int expected = 0;
-        int actual = service.getCurrentVolume();
-
-        assertEquals(expected, actual);
+        assertEquals(0, service.getCurrentVolume());
     }
 
 }
