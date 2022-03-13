@@ -29,8 +29,7 @@ public class Radio {
     public void nextChannel() {
         if (currentChannel < 9) {
             currentChannel = currentChannel + 1;
-        }
-        else {
+        } else {
             this.currentChannel = 0;
         }
     }
@@ -38,8 +37,7 @@ public class Radio {
     public void prevChannel() {
         if (currentChannel > 0) {
             currentChannel = currentChannel - 1;
-        }
-        else {
+        } else {
             this.currentChannel = 9;
         }
     }
