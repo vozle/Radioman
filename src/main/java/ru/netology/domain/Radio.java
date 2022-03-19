@@ -42,8 +42,7 @@ public class Radio {
     public void nextChannel() {
         if (currentChannel < channelCount - 1) {
             currentChannel = currentChannel + 1;
-        }
-        else {
+        } else {
             this.currentChannel = minChannel;
         }
     }
@@ -51,8 +50,7 @@ public class Radio {
     public void prevChannel() {
         if (currentChannel > minChannel) {
             currentChannel = currentChannel - 1;
-        }
-        else {
+        } else {
             this.currentChannel = channelCount - 1;
         }
     }
